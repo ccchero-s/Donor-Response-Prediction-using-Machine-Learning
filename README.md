@@ -1,4 +1,5 @@
 # UNICEF Donor Response Prediction
+Machine Learning | Predictive Modelling | Fundraising Analytics
 
 ## Project Overview
 This project develops a machine learning model to predict donor responses to direct mail (DM) fundraising campaigns for UNICEF Australia. The goal is to improve donor targeting by identifying individuals who are most likely to respond to fundraising appeals.
@@ -7,7 +8,10 @@ Using historical donor behaviour and campaign data, several predictive models we
 
 By applying predictive analytics, this project demonstrates how data-driven decision making can help nonprofit organisations improve fundraising efficiency and maximise campaign return on investment.
 
-## Business Problem
+---
+
+# Business Problem
+
 UNICEF Australia relies heavily on direct mail fundraising campaigns to support humanitarian programs aimed at improving children's health, education, and welfare worldwide.
 
 However, traditional mail fundraising faces several challenges:
@@ -17,12 +21,15 @@ However, traditional mail fundraising faces several challenges:
 - Competition from digital fundraising channels
 - Donor fatigue due to repeated appeals
 
-Sending letters to donors who are unlikely to respond leads to higher operational costs and lower campaign efficiency.
+Sending letters to donors who are unlikely to respond leads to higher operational costs and reduced campaign efficiency.
 
 Therefore, UNICEF requires a data-driven donor targeting strategy to maximise campaign effectiveness.
 
-## Project Objective
-The objective of this project is to build a propensity model that predicts whether a donor will respond to a fundraising campaign within the next three months.
+---
+
+# Project Objective
+
+The objective of this project is to build a **propensity model** that predicts whether a donor will respond to a fundraising campaign within the next three months.
 
 The model helps UNICEF:
 
@@ -31,12 +38,15 @@ The model helps UNICEF:
 - Increase response rates
 - Optimise campaign return on investment
 
-This problem is framed as a binary classification task, where donors are classified as either:
+This problem is framed as a **binary classification task**, where donors are classified as either:
 
 - Likely to respond
 - Unlikely to respond
 
-## Dataset
+---
+
+# Dataset
+
 The dataset contains historical donor and campaign information provided by UNICEF.
 
 Key characteristics of the data include:
@@ -46,106 +56,101 @@ Key characteristics of the data include:
 - Donation frequency and amounts
 - Demographic attributes
 
-The analysis focuses on individual donors in Australia and New Zealand, using campaign data from 2020–2025 to capture recent fundraising trends.
+The analysis focuses on individual donors located in **Australia and New Zealand**, using campaign data from **2020–2025** to reflect recent fundraising behaviour.
 
-## Exploratory Data Analysis (EDA)
-Initial data exploration revealed several important patterns in donor behaviour.
+---
 
-### Donor Response Distribution
-The dataset is highly imbalanced, with significantly fewer responding donors compared to non-responders.
+# Exploratory Data Analysis
 
-This imbalance highlights the importance of using evaluation metrics that account for both precision and recall.
+Initial exploration of the dataset revealed several patterns in donor behaviour and donation patterns.
 
-### Donation Behaviour
-Donors who responded to campaigns tended to have:
+### Donor Segment Analysis
 
-- Higher historical donation frequency
-- Shorter time since last donation
-- Stronger engagement with previous campaigns
+![Average Gift by Segment](images/segment_gift_amount.png)
 
-### Campaign Timing
-Donation likelihood was influenced by campaign timing and previous donor engagement patterns.
+Average donation amounts vary significantly across donor segments. Segments such as **Graceful Ageing**, **First Class Life**, and **Striving for Status** show the highest average donation values, suggesting that targeted engagement with these donor groups may significantly improve fundraising outcomes.
 
-These insights informed feature engineering and model development.
+This insight highlights the importance of donor segmentation in improving campaign effectiveness.
 
-## Feature Engineering
-Several features were engineered to capture donor behaviour and campaign engagement patterns.
+---
 
-Examples include:
+# Feature Impact on Donation Probability
 
-### Recency Features
-- Days since last donation
-- Time since previous campaign response
+![Donation Probability Factors](images/donation_probability_factors.png)
 
-These features capture donor engagement recency, which is often a strong predictor of future behaviour.
+The analysis shows that **donor recency (Days Since Last Gift)** is one of the strongest predictors of future donations.
 
-### Frequency Features
-- Total number of historical donations
-- Donation frequency within a given time period
+Donors who have donated recently are significantly more likely to respond to future fundraising campaigns. Demographic indicators and previous donation behaviour also play important roles in predicting donor response.
 
-These indicators reflect donor loyalty and engagement level.
+Understanding these factors helps identify high-potential donors for future campaigns.
 
-### Campaign Interaction Features
-- Previous campaign responses
-- Historical response intervals
+---
 
-These features help identify donors who consistently engage with fundraising campaigns.
+# Machine Learning Models
 
-Feature engineering plays a critical role in improving model predictive performance.
-
-## Machine Learning Models
-Three machine learning models were implemented and compared.
+Three machine learning models were implemented and compared:
 
 ### Logistic Regression
-A baseline model that provides high interpretability and allows stakeholders to understand which features influence donor responses.
+A baseline model that provides strong interpretability and allows stakeholders to understand how different variables influence donor responses.
 
 ### Random Forest
-A tree-based ensemble model capable of capturing non-linear relationships in donor behaviour.
+An ensemble tree-based model capable of capturing non-linear relationships between donor characteristics and response behaviour.
 
 ### XGBoost
-A gradient boosting algorithm designed for high predictive performance and complex feature interactions.
+A gradient boosting algorithm designed to achieve strong predictive performance through sequential tree optimisation.
 
-## Model Evaluation
-Models were evaluated using the F1-score, which balances precision and recall.
+---
 
-This metric is particularly appropriate for imbalanced classification problems where both:
+# Model Performance Comparison
 
-- correctly identifying responding donors
-- avoiding false predictions
 
-are important.
+The models were evaluated using **Weighted F1-score**, which balances precision and recall and is appropriate for imbalanced classification problems.
 
-## Model Performance Comparison
+Results show:
 
-| Model | Performance |
-|-------|-------------|
-| Logistic Regression | Best overall performance |
-| Random Forest | Strong predictive accuracy |
-| XGBoost | Competitive performance |
+| Model | Weighted F1 Score | Class 1 F1 Score |
+|------|------|------|
+| Logistic Regression | **0.87** | 0.95 |
+| Random Forest | 0.84 | 0.90 |
+| XGBoost | 0.85 | 0.91 |
 
-Although more complex models were evaluated, Logistic Regression produced the most effective and interpretable results for this dataset.
+Logistic Regression achieved the best overall performance and showed the smallest difference between training and testing performance, indicating better generalisation capability.
 
-## Business Impact
-The predictive model enables UNICEF to adopt a data-driven fundraising strategy.
+---
+
+# Key Insights
+
+Several important insights emerged from the analysis:
+
+- Donor **recency** is one of the strongest predictors of response likelihood.
+- Donors with **higher historical donation frequency** are more likely to respond to future campaigns.
+- Donor **segmentation reveals significant variation in donation behaviour**, suggesting opportunities for targeted fundraising strategies.
+- Predictive modelling can help identify donors most likely to respond, improving campaign efficiency and reducing unnecessary mailing costs.
+
+---
+
+# Business Impact
+
+The predictive model enables UNICEF to adopt a **data-driven fundraising strategy**.
 
 By targeting donors who are most likely to respond, UNICEF can:
 
-- Reduce unnecessary campaign costs
+- Reduce campaign costs by avoiding unnecessary mailings
 - Improve donor engagement
 - Increase fundraising efficiency
 - Allocate resources more effectively
 
-These improvements help maximise the impact of fundraising campaigns and support UNICEF's humanitarian mission.
+These improvements help maximise the impact of fundraising campaigns and support UNICEF’s mission of improving children's lives worldwide.
 
-## Tools & Technologies
-- Python
-- Pandas
-- Scikit-learn
-- XGBoost
-- Machine Learning
+---
 
-## Key Takeaways
-- Machine learning can significantly improve donor targeting in fundraising campaigns.
-- Donor behaviour patterns such as recency and frequency are strong predictors of response likelihood.
-- Interpretable models such as Logistic Regression can provide both strong performance and transparency for stakeholders.
-- Data-driven campaign optimisation can reduce operational costs while improving fundraising outcomes.
+# Tools & Technologies
+
+Python  
+Pandas  
+Scikit-learn  
+XGBoost  
+Machine Learning  
+
+---
+
