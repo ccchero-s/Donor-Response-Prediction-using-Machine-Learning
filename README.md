@@ -1,5 +1,5 @@
 # UNICEF Donor Response Prediction
-Machine Learning | Predictive Modelling | Fundraising Analytics
+Machine Learning | Predictive Modelling | Fundraising Analytics | Classification
 
 ## Project Overview
 This project develops a machine learning model to predict donor responses to direct mail (DM) fundraising campaigns for UNICEF Australia. The goal is to improve donor targeting by identifying individuals who are most likely to respond to fundraising appeals.
